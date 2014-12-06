@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141203060447) do
+ActiveRecord::Schema.define(version: 20141206141118) do
 
-  create_table "web_apps", force: true do |t|
+  create_table "websites", force: true do |t|
     t.string   "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

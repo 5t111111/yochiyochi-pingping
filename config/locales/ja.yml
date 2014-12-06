@@ -19,11 +19,11 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
+ja:
   errors: &errors
     messages:
-      bad_uri: is an invalid url
-      bad_protocol: must start with %{protocols}
+      bad_uri: は不正なURLです
+      bad_protocol: は %{protocols} で始まる必要があります
   activemodel:
     errors:
       <<: *errors

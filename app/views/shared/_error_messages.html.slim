@@ -1,10 +1,10 @@
-- if @web_app.errors.any?
+- if @website.errors.any?
   div
     div
       | The form contains
-      = pluralize(@web_app.errors.count, "error")
+      = pluralize(@website.errors.count, "error")
       | .
     ul
-    - @web_app.errors.full_messages.each do |msg|
+    - @website.errors.full_messages.each do |msg|
       li
         = msg
