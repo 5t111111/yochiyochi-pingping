@@ -10,9 +10,4 @@ class WebsitesControllerTest < ActionController::TestCase
     get :show, id: 1
     assert_response :success
   end
-
-  #test "should post create" do
-  #  post :create, "url" => 'http://example.com'
-  #  assert_response :success
-  #end
 end
