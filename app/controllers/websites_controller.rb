@@ -1,19 +1,22 @@
 class WebsitesController < ApplicationController
-  before_action :set_website, only: [:show, :edit, :update, :destroy]
+  before_action :set_website, only: [:edit, :update, :destroy]
+  before_action :logged_in_user, only: [:create, :destroy]
+  before_action :owner_user, only: [:edit, :update, :destroy]
+  before_action :prepare_websites, only: [:index, :create]
 
   # GET /websites
   def index
-    @websites = Website.all
+    @website = current_user.websites.build if logged_in?
   end
 
   # GET /websites/1
-  def show
-  end
+  #def show
+  #end
 
   # GET /websites/new
-  def new
-    @website = Website.new
-  end
+  #def new
+  #  @website = Website.new
+  #end
 
   # GET /websites/edit
   def edit
@@ -21,19 +24,20 @@ class WebsitesController < ApplicationController
 
   # POST /websites
   def create
-    @website = Website.new(website_params)
+    @website = current_user.websites.build(website_params)
     if @website.save
-      flash[:success] = 'Welcome to Sample App!'
-      redirect_to @website
+      flash[:success] = 'Webサイトの情報は正常に登録されました'
+      redirect_to root_path
     else
-      render :new
+      render :index
     end
   end
 
   # PATCH/PUT /websites/1
   def update
     if @website.update(website_params)
-      redirect_to @website, notice: 'Website was successfully updated.'
+      flash[:success] = 'Webサイトの情報は正常に更新されました'
+      redirect_to root_path
     else
       render :edit
     end
@@ -42,17 +46,33 @@ class WebsitesController < ApplicationController
   # DELETE /websites/1
   def destroy
     @website.destroy
-    redirect_to websites_url, notice: 'Website was successfully destroyed.'
+    flash[:success] = 'Webサイトの情報は正常に削除されました'
+    redirect_to root_path
   end
 
   private
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_website
-      @website = Website.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_website
+    @website = Website.find(params[:id])
+  end
 
-    def website_params
-      params.require(:website).permit(:url)
+  def website_params
+    params.require(:website).permit(:url)
+  end
+
+  def prepare_websites
+    @websites = Website.all
+  end
+
+  def owner_user
+    if current_user.nil?
+      flash[:danger] = 'ログインが必要です'
+      redirect_to root_path
+    elsif current_user.websites.include?(@website) == false
+      flash[:danger] = 'このページへの操作は許可されていません'
+      redirect_to root_path
     end
+    true
+  end
 end

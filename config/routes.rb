@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   get 'new' => 'websites#new'
   #resources :websites, only: %i(new show create edit update destroy)
   #resources :websites, except: %i(index new)
-  resources :websites
+  resources :websites, except: %i(show)
   resources :users
   get '/auth/:provider/callback' => 'sessions#create'
+  delete '/logout'               => 'sessions#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
