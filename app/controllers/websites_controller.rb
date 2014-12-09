@@ -9,15 +9,6 @@ class WebsitesController < ApplicationController
     @website = current_user.websites.build if logged_in?
   end
 
-  # GET /websites/1
-  #def show
-  #end
-
-  # GET /websites/new
-  #def new
-  #  @website = Website.new
-  #end
-
   # GET /websites/edit
   def edit
   end
