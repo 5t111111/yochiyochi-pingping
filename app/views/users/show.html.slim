@@ -1,0 +1,24 @@
+- provide(:title, 'Users#show')
+
+div
+  div
+    h1
+      = @user.name
+    = image_tag @user.avatar_url, alt: @user.name, size: '40x40'
+    h3
+      = "Websites ( #{@user.websites.count} )"
+  - if @user.websites.any?
+    table
+      thead
+        tr
+          th URL
+          th
+          th
+          th
+      tbody
+        - @user.websites.each do |website|
+          tr
+            td = website.url
+            td = link_to 'Show', website
+            td = link_to 'Edit', edit_website_path(website)
+            td = link_to 'Destroy', website, data: {:confirm => 'Are you sure?'}, :method => :delete
