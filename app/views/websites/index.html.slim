@@ -1,17 +1,28 @@
 - provide(:title, 'Websites#index')
 
 h1 Websites#index
+- if logged_in?
+  = form_for(@website) do |f|
+    == render 'shared/error_messages'
+    = f.label :url
+    = f.text_field :url, placeholder: 'Enter URL'
+    = f.submit '登録'
 table
   thead
     tr
       th URL
       th
       th
-      th
   tbody
     - @websites.each do |website|
       tr
-        td = website.url
-        td = link_to 'Show', website
-        td = link_to 'Edit', edit_website_path(website)
-        td = link_to 'Destroy', website, data: {:confirm => 'Are you sure?'}, :method => :delete
+        td
+          = website.url
+        - if current_user && current_user.websites.include?(website)
+          td
+            = link_to 'Edit', edit_website_path(website)
+          td
+            = link_to 'Destroy', website, data: {:confirm => 'Are you sure?'}, :method => :delete
+        - else
+          td
+          td

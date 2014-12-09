@@ -9,9 +9,8 @@ class UserTest < ActiveSupport::TestCase
     @user = users(:test_user_1)
   end
 
-  test 'associated microposts should be destroyed' do
+  test 'associated websites should be destroyed' do
     @user.save
-    @user.websites.create!(url: 'http://test.example.com')
     assert_difference 'Website.count', -1 do
       @user.destroy
     end

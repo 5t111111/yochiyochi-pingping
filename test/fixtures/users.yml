@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 test_user_1:
+  id: 101
   name: test_user_1
   provider: github
-  uid: 111
-  avatar_url: https://avatars.githubusercontent.com/u/111
+  uid: 100101
+  avatar_url: https://avatars.githubusercontent.com/u/100101
 
 test_user_2:
+  id: 102
   name: test_user_2
   provider: github
-  uid: 222
-  avatar_url: https://avatars.githubusercontent.com/u/222
+  uid: 100102
+  avatar_url: https://avatars.githubusercontent.com/u/100102

@@ -14,11 +14,16 @@ div
           th URL
           th
           th
-          th
       tbody
         - @user.websites.each do |website|
           tr
-            td = website.url
-            td = link_to 'Show', website
-            td = link_to 'Edit', edit_website_path(website)
-            td = link_to 'Destroy', website, data: {:confirm => 'Are you sure?'}, :method => :delete
+            td
+              = website.url
+            - if current_user && current_user.websites.include?(website)
+              td
+                = link_to 'Edit', edit_website_path(website)
+              td
+                = link_to 'Destroy', website, data: {:confirm => 'Are you sure?'}, :method => :delete
+            - else
+              td
+              td

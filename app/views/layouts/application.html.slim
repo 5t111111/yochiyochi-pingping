@@ -9,6 +9,7 @@ html
   body
     // TODO use i18n
     = link_to 'Github でサインイン', '/auth/github'
+    = link_to 'サインアウト', logout_path, method: 'delete'
     - flash.each do |message_type, message|
       .alert class="#{alert_class_for(message_type)}"
         = message
