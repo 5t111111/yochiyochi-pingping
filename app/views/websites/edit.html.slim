@@ -1,0 +1,10 @@
+- provide(:title, 'Websites#edit')
+
+h1 Websites#edit
+
+div
+  = form_for(@website) do |f|
+    == render 'shared/error_messages'
+    = f.label :url
+    = f.text_field :url
+    = f.submit

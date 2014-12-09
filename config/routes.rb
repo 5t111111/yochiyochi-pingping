@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  #get 'websites/new'
+  root 'websites#index'
   get 'new' => 'websites#new'
-  resources :websites, only: %i(new show create)
+  #resources :websites, only: %i(new show create edit update destroy)
+  #resources :websites, except: %i(index new)
+  resources :websites
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
