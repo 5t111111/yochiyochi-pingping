@@ -2,7 +2,8 @@ require 'test_helper'
 
 class WebsiteTest < ActiveSupport::TestCase
   def setup
-    @website = Website.new
+    @user = users(:test_user_1)
+    @website = @user.websites.build(url: 'http://test.example.com')
   end
 
   test 'url should not be blank' do
@@ -38,5 +39,10 @@ class WebsiteTest < ActiveSupport::TestCase
       assert @website.errors.key?(:url), "#{invalid_url.inspect} should have :url key in errors"
       assert @website.errors[:url][0] == 'は http / https で始まる必要があります', "#{@website.errors[:url][0]}"
     end
+  end
+
+  test "should be alphabetically ordered" do
+    assert_equal Website.first, websites(:four)
+    assert_equal Website.last, websites(:two)
   end
 end

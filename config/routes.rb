@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   #resources :websites, only: %i(new show create edit update destroy)
   #resources :websites, except: %i(index new)
   resources :websites
+  resources :users
   get '/auth/:provider/callback' => 'sessions#create'
 
   # The priority is based upon order of creation: first created -> highest priority.

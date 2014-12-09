@@ -26,7 +26,7 @@ class WebsitesController < ApplicationController
       flash[:success] = 'Welcome to Sample App!'
       redirect_to @website
     else
-      render 'new'
+      render :new
     end
   end
 

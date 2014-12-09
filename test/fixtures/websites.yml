@@ -2,8 +2,20 @@
 
 one:
   id: 1
-  url: http://example.com
+  url: http://one.example.com
+  created_at: <%= 10.minutes.ago %>
 
 two:
   id: 2
-  url: http://example.com
+  url: http://two.example.com
+  created_at: <%= 3.years.ago %>
+
+three:
+  id: 3
+  url: http://three.example.com
+  created_at: <%= 2.hours.ago %>
+
+four:
+  id: 4
+  url: http://four.example.com
+  created_at: <%= Time.zone.now %>
