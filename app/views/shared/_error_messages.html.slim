@@ -1,0 +1,10 @@
+- if @website.errors.any?
+  div
+    div
+      | The form contains
+      = pluralize(@website.errors.count, "error")
+      | .
+    ul
+    - @website.errors.full_messages.each do |msg|
+      li
+        = msg
