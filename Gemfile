@@ -38,6 +38,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use addressable for URL validation
 gem 'addressable'
 
+# Use devise and omniauth for users 
+gem 'devise'
+gem 'omniauth-twitter'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

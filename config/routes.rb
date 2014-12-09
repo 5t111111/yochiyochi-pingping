@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root 'websites#index'
   get 'new' => 'websites#new'
   #resources :websites, only: %i(new show create edit update destroy)
