@@ -1,28 +1,41 @@
-- provide(:title, 'Websites#index')
+- provide(:title)
 
-h1 Websites#index
-- if logged_in?
-  = form_for(@website) do |f|
-    == render 'shared/error_messages'
-    = f.label :url
-    = f.text_field :url, placeholder: 'Enter URL'
-    = f.submit '登録'
-table
+.row
+    .header-unit-image
+    .header-unit-text
+      span.text
+        | 現在
+      span.number
+        = Website.count
+      span.text
+        | このウェブサイトにPING中
+
+.input-url
+  - if logged_in?
+    = form_for(@website) do |f|
+      == render 'shared/error_messages'
+      .form-group.add-form
+        = f.text_field :url, placeholder: 'PINGを送りたいURLを入力してください (例: http://example.com)', class: 'form-control'
+        = f.submit 'このURLを追加する', class: 'btn btn-default'
+table.table.table-striped
   thead
     tr
       th URL
+      th
       th
       th
   tbody
     - @websites.each do |website|
       tr
         td
-          = website.url
+          = link_to website.url, website.url
+        td
+          = image_tag website_owner(website).avatar_url, alt: website_owner(website).name, size: '20x20'
         - if current_user && current_user.websites.include?(website)
           td
-            = link_to 'Edit', edit_website_path(website)
+            = link_to '編集', edit_website_path(website)
           td
-            = link_to 'Destroy', website, data: {:confirm => 'Are you sure?'}, :method => :delete
+            = link_to '削除', website, data: {:confirm => "#{website.url} を削除してよろしいですか？"}, :method => :delete
         - else
           td
           td

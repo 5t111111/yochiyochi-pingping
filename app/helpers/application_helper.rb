@@ -14,8 +14,13 @@ module ApplicationHelper
     {
       success: 'alert-success',
       error: 'alert-danger',
+      danger: 'alert-danger',
       alert: 'alert-warning',
       notice: 'alert-info'
     }[flash_type.to_sym] || flash_type.to_s
+  end
+
+  def website_owner(website)
+    User.find(website.user_id)
   end
 end

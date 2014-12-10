@@ -1,0 +1,48 @@
+/* variables */
+$em-normalize-ratio: 62.5%;
+
+/* base */
+html {
+  font-size: $em-normalize-ratio;
+}
+
+body {
+}
+
+header {
+  i.fa {
+    font-size: 2.0rem;
+    padding-right: .5rem;
+  }
+
+  .avatar-image {
+    margin-right: 1.0rem;
+  }
+}
+
+.header-unit-image {
+  background-image: image-url("yochiyochi-pingping.png");
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  height: 340px;
+  margin: 0 auto;
+}
+
+.header-unit-text {
+  text-align: center;
+
+  span.number {
+    font-size: 6.0rem;
+    margin-left: 2.0rem;
+    margin-right: 2.0rem;
+  }
+  span.text {
+  }
+}
+
+.add-form {
+  margin-top: 40px;
+  text-align: center;
+}
