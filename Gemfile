@@ -3,8 +3,6 @@ source 'https://rails-assets.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0.rc1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -45,6 +43,11 @@ gem 'omniauth-github'
 # Rails Assets
 gem 'rails-assets-bootstrap', '~> 3.3.1'
 gem 'rails-assets-font-awesome', '~> 4.2.0'
+
+group :development do
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
