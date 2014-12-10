@@ -17,6 +17,9 @@
       .form-group.add-form
         = f.text_field :url, placeholder: 'PINGを送りたいURLを入力してください (例: http://example.com)', class: 'form-control'
         = f.submit 'このURLを追加する', class: 'btn btn-default'
+  - else
+    p.need-login
+      | ログインしてURLを追加してください
 table.table.table-striped
   thead
     tr
