@@ -1,15 +1,5 @@
 - provide(:title)
 
-.row
-    .header-unit-image
-    .header-unit-text
-      span.text
-        | 現在
-      span.number
-        = Website.count
-      span.text
-        | このウェブサイトにPING中
-
 .input-url
   - if logged_in?
     = form_for(@website) do |f|
@@ -20,6 +10,15 @@
   - else
     p.need-login
       | ログインしてURLを追加してください
+.row
+    .header-unit-image
+    .header-unit-text
+      span.text
+        | 現在
+      span.number
+        = Website.count
+      span.text
+        | のウェブサイトにPING中
 table.table.table-striped
   thead
     tr

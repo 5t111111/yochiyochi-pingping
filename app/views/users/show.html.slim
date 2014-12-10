@@ -21,9 +21,9 @@ div
               = link_to website.url, website.url
             - if current_user && current_user.websites.include?(website)
               td
-                = link_to 'Edit', edit_website_path(website)
+                = link_to '編集', edit_website_path(website)
               td
-                = link_to 'Destroy', website, data: {:confirm => 'Are you sure?'}, :method => :delete
+                = link_to '削除', website, data: {:confirm => 'Are you sure?'}, :method => :delete
             - else
               td
               td
