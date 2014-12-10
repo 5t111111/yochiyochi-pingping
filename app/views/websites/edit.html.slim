@@ -1,10 +1,11 @@
 - provide(:title, 'Websites#edit')
 
-h1 Websites#edit
+h1
+  = "#{@website.url} の編集"
 
 div
   = form_for(@website) do |f|
     == render 'shared/error_messages'
-    = f.label :url
-    = f.text_field :url
-    = f.submit
+    .form-group.add-form
+      = f.text_field :url, class: 'form-control'
+      = f.submit '更新する', class: 'btn btn-default'

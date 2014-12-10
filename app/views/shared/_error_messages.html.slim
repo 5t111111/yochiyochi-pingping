@@ -1,5 +1,5 @@
 - if @website.errors.any?
-  div
+  div.alert.alert-danger
     div
       | The form contains
       = pluralize(@website.errors.count, "error")

@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+source 'https://rails-assets.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0.rc1'
@@ -38,8 +38,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use addressable for URL validation
 gem 'addressable'
 
+# Use omniauth for oauth
 gem 'omniauth'
 gem 'omniauth-github'
+
+# Rails Assets
+gem 'rails-assets-bootstrap', '~> 3.3.1'
+gem 'rails-assets-font-awesome', '~> 4.2.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

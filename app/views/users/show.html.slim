@@ -1,14 +1,14 @@
-- provide(:title, 'Users#show')
+- provide(:title, 'Profile')
 
 div
   div
+    = image_tag @user.avatar_url, alt: @user.name, size: '120x120', class: 'profile-avatar-image'
     h1
       = @user.name
-    = image_tag @user.avatar_url, alt: @user.name, size: '40x40'
     h3
-      = "Websites ( #{@user.websites.count} )"
+      = "登録しているウェブサイトの数 ( #{@user.websites.count} )"
   - if @user.websites.any?
-    table
+    table.table.table-striped
       thead
         tr
           th URL
@@ -18,7 +18,7 @@ div
         - @user.websites.each do |website|
           tr
             td
-              = website.url
+              = link_to website.url, website.url
             - if current_user && current_user.websites.include?(website)
               td
                 = link_to 'Edit', edit_website_path(website)
