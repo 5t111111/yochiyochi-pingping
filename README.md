@@ -1,3 +1,3 @@
 # yochiyochi-pingping
 
-https://yochiyochi-pingping.herokuapp.com/
+https://yochiyochi-pingping.nilsteps.com/
