@@ -10,11 +10,16 @@ namespace :website do
       uri = URI.parse(website.url)
       threads << Thread.new do
         m.synchronize do
-          puts "  +++ #{uri} is going to be pinged."
+          puts "+++ #{uri} is going to be pinged."
         end
-        Net::HTTP.get(uri)
+        res_str = Net::HTTP.get(uri)
         m.synchronize do
-          puts "  --- #{uri} is pinged."
+          puts ""
+          puts "--- #{uri} is pinged."
+          puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+          puts res_str.slice(0, 1000)
+          puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+          puts ""
         end
       end
     end
