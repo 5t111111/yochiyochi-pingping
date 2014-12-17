@@ -4,16 +4,21 @@ namespace :website do
     require 'net/http'
     require 'thwait'
     threads = []
-    puts "------ WAKEUP START: #{Time.now} ------"
+    m = Mutex.new
+    puts "====== WAKEUP START: #{Time.now} ======"
     Website.find_each do |website|
       uri = URI.parse(website.url)
       threads << Thread.new do
-        puts "  --- #{uri} is going to be pinged."
+        m.synchronize do
+          puts "  +++ #{uri} is going to be pinged."
+        end
         Net::HTTP.get(uri)
-        puts "  --- #{uri} is pinged."
+        m.synchronize do
+          puts "  --- #{uri} is pinged."
+        end
       end
     end
     ThreadsWait.all_waits(*threads)
-    puts "------ WAKEUP FINISH: #{Time.now} ------"
+    puts "====== WAKEUP FINISH: #{Time.now} ======"
   end
 end
