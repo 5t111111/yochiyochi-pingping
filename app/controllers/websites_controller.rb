@@ -53,7 +53,7 @@ class WebsitesController < ApplicationController
   end
 
   def prepare_websites
-    @websites = Website.all
+    @websites = Website.all.includes(:user)
   end
 
   def owner_user

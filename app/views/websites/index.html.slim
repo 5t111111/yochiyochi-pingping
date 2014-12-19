@@ -32,7 +32,7 @@ table.table.table-striped
         td
           = link_to website.url, website.url
         td
-          = image_tag website_owner(website).avatar_url, alt: website_owner(website).name, size: '20x20'
+          = image_tag website.user.avatar_url, alt: website.user.name, size: '20x20'
         - if current_user && current_user.websites.include?(website)
           td
             = link_to '編集', edit_website_path(website)
