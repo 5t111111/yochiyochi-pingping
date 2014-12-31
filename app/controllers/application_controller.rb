@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   include SessionsHelper
 
-  http_basic_authenticate_with :name => "name", :password => "password" if Rails.env.staging?
+  #http_basic_authenticate_with :name => "name", :password => "password" if Rails.env.staging?
 
   private
 
