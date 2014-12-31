@@ -73,7 +73,7 @@ group :test do
   gem 'guard-minitest',     '2.3.1'
 end
 
-group :production do
+group :production, :staging do
   gem 'pg'
   gem 'rails_12factor'
 end
